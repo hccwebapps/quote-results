@@ -1,0 +1,16 @@
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.text-left { text-align: left }
+.text-center { text-align: center }
+.text-right { text-align: right }
+
+hr {
+  background: none;
+  border: none;
+  height: 0;
+  border-top: 1px solid #999;
+}

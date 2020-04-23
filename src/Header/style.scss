@@ -1,0 +1,19 @@
+.Header {
+  img {
+    max-height: 80px;
+    &.inova {
+      float: left;
+    }
+    &.costco {
+      float: right;
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .Header {
+    img {
+      max-height: 100px;
+    }
+  }
+}

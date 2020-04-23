@@ -1,0 +1,19 @@
+.Price {
+  height: 70px;
+  border-bottom: 1px solid #999;
+  .BasePrice {
+    display: inline-block;
+    width: 30%;
+    text-align: right;
+    .Amount {
+      font-size: 50px;
+      font-weight: 500;
+    }
+  }
+  .PriceBreakdown {
+    display: inline-block;
+    width: 65%;
+    margin-left: 5%;
+    font-size: 80%;
+  }
+}

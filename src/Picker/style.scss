@@ -1,0 +1,57 @@
+.Picker {
+  position: relative;
+  height: 100px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  hr {
+    position: absolute;
+    top: 28px;
+    width: 76%;
+    margin: 0 12% 0 12%;
+  }
+}
+
+.PickerButton {
+  position: absolute;
+  border: none;
+  background: transparent;
+  outline: none;
+  small {
+    display: block;
+    padding-top: 10px;
+    color: #aaa;
+  }
+  &.Good { left: 5% }
+  &.Better {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  &.Best { right: 5% }
+  &:before {
+    content: '';
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background: #ccc;
+    border-radius: 8px;
+    transition: transform 116ms ease-out, color 116ms ease-out;
+  }
+  &.Active {
+    small {
+      color: #999;
+      font-weight: bold;
+      transform: scale(1.1);
+    }
+    &:before {
+      background: #999;
+      transform: scale(1.5);
+    }
+  }
+  &:hover {
+    cursor: pointer;
+    &:before {
+      transform: scale(1.5);
+      background: #888;
+    }
+  }
+}
