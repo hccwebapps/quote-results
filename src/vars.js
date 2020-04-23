@@ -1,6 +1,6 @@
 import React from 'react'
 
-const coverage = [
+export const coverage = [
   // {
   //   id: 1,
   //   name: 'deductible_comprehensive',
@@ -57,4 +57,3 @@ const coverage = [
   },
 ]
 
-export default coverage

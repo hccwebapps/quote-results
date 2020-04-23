@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import CoverageItem from './CoverageItem'
-import coverage from 'coverage'
+import { coverage } from 'vars'
 import { AppContext } from 'App'
 
 import './style.scss'
