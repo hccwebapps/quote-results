@@ -3,6 +3,14 @@
   appearance: none;
   text-transform: uppercase;
   border: none;
-  background: #999;
+  background-color: #999;
   color: #fff;
+  text-decoration: none;
+  transition: transform 167ms ease-out,
+              background-color 167ms ease-out;
+  &:hover {
+    transform: scale(1.06);
+    background-color: #777;
+    cursor: pointer;
+  }
 }

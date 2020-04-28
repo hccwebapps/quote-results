@@ -1,12 +1,77 @@
 .Results {
+  h1 {
+    margin: 0;
+  }
+  h2 {
+    margin: 0;
+    color: #777;
+    font-weight: 400;
+    margin-bottom: 1rem;
+    span {
+      color: #444;
+    }
+  }
+}
+
+.Results {
   .BuyNow {
-    display: block;
+    display: inline-block;
     font-size: 1.2rem;
     font-weight: 500;
     padding: 8px 15px;
     letter-spacing: 0.75px;
-    margin: 0 auto;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
+    outline: none;
+    transition: opacity 300ms ease-out, font-size 300ms ease-out;
+    &.active {
+      font-size: 0.8rem;
+      opacity: 0.4;
+    }
+  }
+}
+
+.Congrats {
+  height: 125px;
+  overflow: hidden;
+  transition: height 312ms ease-out;
+  &.hidden {
+    height: 0;
+    transition: height 312ms ease-out;
+  }
+}
+
+.BuyOptions {
+  height: 0;
+  overflow: hidden;
+  transition: height 312ms ease-out;
+  &.active {
+    height: 125px;
+    transition: height 312ms ease-out;
+  }
+  small {
+    display: block;
+  }
+  .Calls {
+    padding-top: 2.5rem;
+    padding-bottom: 1rem;
+    .Or {
+      display: inline-block;
+      padding-left: 10px;
+      padding-right: 10px;
+      vertical-align: middle;
+    }
+  }
+}
+
+.Proceed {
+  width: 150px;
+  padding: 8px 16px;
+  vertical-align: middle;
+  border-radius: 6px;
+  outline: none;
+  p {
+    margin: 0;
+    font-size: 1.25rem;
   }
 }

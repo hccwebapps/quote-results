@@ -5,7 +5,7 @@ import { AppContext } from 'App'
 
 import './style.scss'
 
-const Coverage = () => {
+const Coverage = ({ Faded }) => {
 
   const { currentCoverage } = useContext(AppContext)
 
@@ -28,7 +28,7 @@ const Coverage = () => {
   }
 
   return (
-    <div className="Coverage">
+    <div className={Faded ? 'Coverage faded' : 'Coverage'}>
       <div className="DollarValues">
         <div className="third-col">
           <div className="DollarItem">

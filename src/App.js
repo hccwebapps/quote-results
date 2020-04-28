@@ -1,6 +1,11 @@
 import React, { useState } from 'react'
+import { Switch, Route } from 'react-router-dom'
 import Header from 'Header'
 import Results from 'Results'
+import ApplyOnline from 'ApplyOnline'
+import ApplyOffline from 'ApplyOffline'
+
+import './forms.scss'
 
 export const AppContext = React.createContext()
 
@@ -30,7 +35,17 @@ function App() {
     }}>
       <div className="App">
         <Header />
-        <Results />
+        <Switch>
+          <Route exact path="/">
+            <Results />
+          </Route>
+          <Route path="/online">
+            <ApplyOnline />
+          </Route>
+          <Route path="/offline">
+            <ApplyOffline />
+          </Route>
+        </Switch>
       </div>
     </AppContext.Provider>
   )

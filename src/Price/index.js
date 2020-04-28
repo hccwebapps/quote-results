@@ -36,7 +36,7 @@ const Price = () => {
               {prices[currentCoverage].month}
             </span>
           </div >
-          <div className="PriceBreakdown">
+          <div className="PriceBreakdown text-left">
             Per month, <strong>${prices[currentCoverage].year}</strong> per year<br />
             <strong>${prices[currentCoverage].bundle}</strong> per month as part of a bundle
           </div>

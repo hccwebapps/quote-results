@@ -4,7 +4,7 @@ import { AppContext } from 'App'
 
 import './style.scss'
 
-const Picker = () => {
+const Picker = ({ Faded }) => {
 
   const { currentCoverage, changeCoverage } = useContext(AppContext)
 
@@ -13,7 +13,7 @@ const Picker = () => {
   }
 
   return (
-    <div className="Picker">
+    <div className={Faded ? 'Picker faded' : 'Picker'}>
       <hr />
       <PickerButton
         onClick={() => set([1, 2], 'good')}

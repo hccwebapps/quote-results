@@ -1,0 +1,29 @@
+.Choice {
+  margin-top: 1rem;
+  .Copy {
+    display: inline-block;
+    width: 55%;
+    margin-right: 3%;
+    text-align: right;
+    text-transform: uppercase;
+    vertical-align: middle;
+    span {
+      display: block;
+      font-size: 1.1rem;
+      color: #999;
+    }
+    h3 {
+      margin: 0;
+      font-size: 1.6rem;
+    }
+  }
+  .Carrier {
+    display: inline-block;
+    width: 40%;
+    img {
+      display: inline-block;
+      height: 60px;
+      vertical-align: middle;
+    }
+  }
+}

@@ -1,0 +1,42 @@
+form {
+  .Button.Submit {
+    display: block;
+    margin: 0 auto;
+    font-size: 1.1rem;
+    letter-spacing: 0.75px;
+    padding: 10px 15px;
+    border-radius: 6px;
+    margin-top: 2rem;
+  }
+}
+
+input[type='text'] {
+  appearance: none;
+  border: 1px solid #ccc;
+  width: 100%;
+  line-height: inherit;
+  color: inherit;
+  font-size: inherit;
+  padding: 6px 10px;
+  border-radius: 3px;
+  outline: none;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  color: #888;
+}
+
+.field {
+  margin-bottom: 1rem;
+  &.half {
+    width: 48%;
+    float: left;
+    &:first-child {
+      margin-right: 4%;
+    }
+  }
+}
+
+::placeholder { color: #ccc }
