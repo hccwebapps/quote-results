@@ -3,7 +3,7 @@
   border-radius: 6px;
   box-shadow: 1px 1px 6px rgba(0,0,0,0.15);
   transition: opacity 300ms ease-out;
-  &.faded {
+  &.Faded {
     opacity: 0.25;
   }
 }
@@ -46,6 +46,44 @@
       font-size: 105%;
     }
   }
+}
+
+.DollarItem span:after,
+.CoverageItem span:after {
+  content: '?';
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  line-height: 16px;
+  font-size: 11px;
+  border: 1px solid #ccc;
+  color: #aaa;
+  margin-left: 6px;
+  border-radius: 9px;
+  
+}
+
+.DollarItem:hover,
+.CoverageItem:hover {
+  cursor: pointer;
+  span:after {
+    color: #666;
+    border-color: #666;
+  }
+}
+
+.CoverageHelp {
+  padding: 1.25rem 0.75rem;
+  small {
+    color: #999;
+  }
+  &.Faded {
+    opacity: 0.25;
+  }
+}
+
+.Faded {
+  pointer-events: none;
 }
 
 @keyframes tada {

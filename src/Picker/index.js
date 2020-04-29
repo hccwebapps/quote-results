@@ -13,7 +13,7 @@ const Picker = ({ Faded }) => {
   }
 
   return (
-    <div className={Faded ? 'Picker faded' : 'Picker'}>
+    <div className={Faded ? 'Picker Faded' : 'Picker'}>
       <hr />
       <PickerButton
         onClick={() => set([1, 2], 'good')}

@@ -14,3 +14,12 @@
     cursor: pointer;
   }
 }
+
+.Button.Submit,
+.Button.Large.Rounded {
+  margin: 0 auto;
+  font-size: 1.1rem;
+  letter-spacing: 0.75px;
+  padding: 10px 15px;
+  border-radius: 6px;
+}

@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import classNames from 'classnames'
 import { AppContext } from 'App'
 
-const CoverageItem = ({ cov }) => {
+const CoverageItem = ({ cov, setHelpSelected }) => {
 
   const { activeCoverages } = useContext(AppContext)
 
@@ -13,7 +13,7 @@ const CoverageItem = ({ cov }) => {
   })
 
   return (
-    <div className={cls}>
+    <div className={cls} onClick={() => setHelpSelected(cov.name)}>
       {isActive ? cov.title : (
         <strike>
           {cov.title}
