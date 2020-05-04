@@ -1,0 +1,47 @@
+.CoverageTable {
+  text-align: center;
+  .ValueCovs {
+    border-bottom: 1px solid #ccc;
+  }
+  .BooleanCovs {
+    
+  }
+}
+
+.Item {
+  display: inline-block;
+  width: 33%;
+  padding: 2%;
+  &.Boolean {
+    width: 50%;
+  }
+  &.Updated {
+    border: 1px solid red;
+    animation-name: tada;
+    animation-duration: 1s;
+    animation-fill-mode: both;
+  }
+}
+
+@keyframes tada {
+  from {
+    transform: scale3d(1, 1, 1);
+    color: green;
+  }
+  10%,
+  20%  {
+    transform: scale3d(0.9, 0.9, 0.9) rotate3d(0, 0, 1, -2deg);
+    color: green;
+  }
+  30%,
+  50%,
+  70%,
+  90%  {
+    transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 2deg);
+    color: green;
+  }
+  40%,
+  60%,
+  80%  { transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -2deg) }
+  to   { transform: scale3d(1, 1, 1) }
+}

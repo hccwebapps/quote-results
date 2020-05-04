@@ -10,7 +10,7 @@ const ApplyOnline = () => {
     <div className="container">
       <Price />
       <div className="text-center ApplyOnline">
-        <p>In order to apply online, please make sure you have your credit card ready.</p>
+        <p>In order to apply online, please<br />make sure you have your credit card ready.</p>
         <Button to="/" className="Large Rounded">
           Begin
         </Button>

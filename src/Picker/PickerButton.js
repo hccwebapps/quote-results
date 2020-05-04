@@ -1,22 +1,22 @@
 import React from 'react'
 import classNames from 'classnames'
 
-const PickerButton = ({ CoverageType, onClick, currentCoverage }) => {
+const PickerButton = ({ CoverageType, onClick, currentPackage }) => {
 
   const cls = classNames('PickerButton', {
-    'Active': currentCoverage === CoverageType,
+    'Active': currentPackage === CoverageType,
     'Good': CoverageType === 'good',
-    'Better': CoverageType === 'better',
-    'Best': CoverageType === 'best',
+    'Better': CoverageType === 'recommended',
+    'Best': CoverageType === 'highest',
   })
 
   const copy = () => {
     switch(CoverageType) {
       case 'good':
         return <small>Base<br /> Coverage</small>
-      case 'better':
+      case 'recommended':
         return <small>Costco<br /> Recommended!</small>
-      case 'best':
+      case 'highest':
         return <small>Highest<br /> Coverage</small>
       default:
         return <small>No coverage type provided</small>

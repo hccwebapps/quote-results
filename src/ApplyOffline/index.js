@@ -35,9 +35,11 @@ const ApplyOffline = () => {
             <label>Phone Number</label>
             <input type="text" name="phone" placeholder="4161170100" />
           </div>
-          <Button Submit>
-            Finish & Submit
-          </Button>
+          <div className="text-center">
+            <Button Submit>
+              Finish & Submit
+            </Button>
+          </div>
         </form>
       </div>
       <Choice />

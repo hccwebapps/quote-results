@@ -1,0 +1,6 @@
+.Vehicle {
+  display: none;
+  &.Visible {
+    display: block;
+  }
+}

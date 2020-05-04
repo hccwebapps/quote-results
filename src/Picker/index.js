@@ -1,34 +1,26 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import PickerButton from './PickerButton'
-import { AppContext } from 'App'
 
 import './style.scss'
 
-const Picker = ({ Faded }) => {
-
-  const { currentCoverage, changeCoverage } = useContext(AppContext)
-
-  const set = (covs, type) => {
-    changeCoverage(covs, type)
-  }
+const Picker = ({ currentPackage, setCurrentPackage, packageSelected }) => {
 
   return (
-    <div className={Faded ? 'Picker Faded' : 'Picker'}>
-      <hr />
+    <div className={packageSelected ? 'Picker Faded' : 'Picker'}>
       <PickerButton
-        onClick={() => set([1, 2], 'good')}
-        currentCoverage={currentCoverage}
+        onClick={() => setCurrentPackage('good')}
+        currentPackage={currentPackage}
         CoverageType="good"
       />
       <PickerButton
-        onClick={() => set([1, 2, 3, 4], 'better')}
-        currentCoverage={currentCoverage}
-        CoverageType="better"
+        onClick={() => setCurrentPackage('recommended')}
+        currentPackage={currentPackage}
+        CoverageType="recommended"
       />
       <PickerButton
-        onClick={() => set([1, 2, 3, 4, 5, 6], 'best')}
-        currentCoverage={currentCoverage}
-        CoverageType="best"
+        onClick={() => setCurrentPackage('highest')}
+        currentPackage={currentPackage}
+        CoverageType="highest"
       />
     </div>
   )

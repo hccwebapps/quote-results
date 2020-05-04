@@ -6,7 +6,7 @@ import './style.scss'
 
 const Price = () => {
 
-  const { priceLoading, currentCoverage } = useContext(AppContext)
+  const { priceLoading, currentPackage } = useContext(AppContext)
 
   const prices = {
     'good': {
@@ -14,12 +14,12 @@ const Price = () => {
       year: '1407',
       bundle: '117',
     },
-    'better': {
+    'recommended': {
       month: '137',
       year: '1691',
       bundle: '121',
     },
-    'best': {
+    'highest': {
       month: '168',
       year: '1832',
       bundle: '153',
@@ -33,12 +33,12 @@ const Price = () => {
           <div className = "BasePrice">
             <span className = "DollarSign">$</span>
             <span className="Amount">
-              {prices[currentCoverage].month}
+              {prices[currentPackage].month}
             </span>
           </div >
           <div className="PriceBreakdown text-left">
-            Per month, <strong>${prices[currentCoverage].year}</strong> per year<br />
-            <strong>${prices[currentCoverage].bundle}</strong> per month as part of a bundle
+            Per month, <strong>${prices[currentPackage].year}</strong> per year<br />
+            <strong>${prices[currentPackage].bundle}</strong> per month as part of a bundle
           </div>
         </div>
       )}

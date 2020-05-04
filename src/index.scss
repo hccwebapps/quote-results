@@ -16,3 +16,24 @@ body {
   padding-bottom: 3rem;
 }
 
+.AddRemoveVehicles {
+  text-align: center;
+  margin-top: 3rem;
+  div {
+    border: 1px solid #e1e1e1;
+    display: inline-block;
+    button {
+      appearance: none;
+      display: inline-block;
+      width: 30px;
+      border: none;
+      background: #fff;
+      color: #999;
+      padding: 5px;
+      outline: none;
+      &:first-child {
+        border-right: 1px solid #ccc;
+      }
+    }
+  }
+}
