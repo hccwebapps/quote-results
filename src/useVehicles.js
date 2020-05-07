@@ -4,24 +4,28 @@ const vehicleList = [
     year: 2007,
     make: 'Honda',
     model: 'Fit LX',
+    new: false,
   },
   {
     id: 2,
-    year: 2015,
+    year: 2020,
     make: 'Ford',
     model: 'Focus DX',
+    new: true,
   },
   {
     id: 3,
     year: 2018,
     make: 'Honda',
     model: 'Ridgeline DX',
+    new: false,
   },
   {
     id: 4,
     year: 2016,
     make: 'Ford',
     model: 'Explorer LX',
+    new: false,
   },
 ]
 

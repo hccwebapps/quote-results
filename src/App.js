@@ -4,6 +4,7 @@ import Header from 'Header'
 import Home from 'Home'
 import ApplyOnline from 'ApplyOnline'
 import ApplyOffline from 'ApplyOffline'
+import OntarioBenefits from 'OntarioBenefits'
 
 import './forms.scss'
 
@@ -37,12 +38,21 @@ const App = () => {
     }
   }
 
+  const changePackage = nextPackage => {
+    setPriceLoading(true)
+    setCurrentPackage(nextPackage)
+    setTimeout(() => {
+      setPriceLoading(false)
+    }, 2000)
+  }
+
   return (
     <AppContext.Provider value={{
       priceLoading,
       setPriceLoading,
       currentPackage,
       setCurrentPackage,
+      changePackage,
     }}>
       <div className="App container">
         <Header />
@@ -52,6 +62,8 @@ const App = () => {
               vehicleIds={vehicleIds}
               currentPackage={currentPackage}
               setCurrentPackage={setCurrentPackage}
+              changePackage={changePackage}
+              priceLoading={priceLoading}
             />
           </Route>
           <Route path="/online">
@@ -59,6 +71,9 @@ const App = () => {
           </Route>
           <Route path="/offline">
             <ApplyOffline />
+          </Route>
+          <Route path="/ontario-benefits">
+            <OntarioBenefits />
           </Route>
         </Switch>
       </div>

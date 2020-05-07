@@ -15,6 +15,7 @@ const SingleVehicle = ({ vehicle, currentPackage, visibleVehicle }) => {
       <CoverageTable
         valueCoverage={valueCoverage}
         booleanCoverage={booleanCoverage}
+        New={vehicle.new}
       />
     </div>
   )

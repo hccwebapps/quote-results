@@ -1,0 +1,44 @@
+.OAB {
+  .benefit-field {
+    margin-bottom: 3.25rem;
+    p {
+      font-size: 0.9rem;
+    }
+    .field-group {
+      label {
+        float: right;
+        text-align: center;
+        width: 24%;
+        height: 85px;
+        vertical-align: middle;
+        margin-left: 1.5%;
+        padding: 1.5%;
+        background: #f1f1f1;
+        border-radius: 5px;
+        &.NoIncrease {
+          width: 20%;
+          float: left;
+          margin-left: 0;
+        }
+        .field-label {
+          display: block;
+        }
+        small {
+          display: block;
+        }
+      }
+    }
+  }
+}
+
+.field-group.Three {
+  label.RegularOption {
+    width: 36.5%;
+  }
+}
+
+.field-group.Two {
+  label.RegularOption {
+    width: 74.5%;
+  }
+}

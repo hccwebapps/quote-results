@@ -1,4 +1,7 @@
 .Congrats {
+  height: 125px;
+  overflow: hidden;
+  transition: height 200ms ease-out;
   h1 {
     margin: 0;
   }
@@ -11,29 +14,72 @@
       color: #444;
     }
   }
+  &.Buying {
+    height: 0;
+  }
+}
+
+.BuyOptions {
+  height: 0;
+  overflow: hidden;
+  text-align: center;
+  transition: height 200ms ease-out;
+  &.Active {
+    height: 125px;
+  }
+  span {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  .Button {
+    padding: 0.75rem 2rem;
+    vertical-align: middle;
+    border-radius: 8px;
+    small {
+      display: block;
+      margin: 0;
+    }
+    span {
+      font-weight: 600;
+      font-size: 1.1rem;
+    }
+  }
+  .PhoneCopy {
+    margin-top: 1rem;
+  }
 }
 
 .Home {
   .BuyNow {
+    position: absolute;
+    bottom: 0;
+    right: calc(50% - 175px);
     display: block;
     margin: 0 auto;
     width: 100px;
     height: 100px;
     border-radius: 70px;
-    font-size: 1.75rem;
+    font-size: 2rem;
     outline: none;
     font-weight: 600;
+    background: #666;
+    line-height: 1.5rem;
+    padding-top: 12px;
     span {
       display: block;
-      font-size: 1.15rem;
+      font-size: 1.25rem;
       font-weight: 400;
+    }
+    &.Disabled {
+      color: #888;
+      pointer-events: none;
     }
   }
 }
 
 .VehiclePicker {
-  appearance: none;
-  display: block;
   width: 200px;
   height: 30px;
   line-height: 30px;
@@ -42,7 +88,6 @@
   text-align-last:center;
   background: #fff;
   border: 1px solid #ccc;
-  outline: none;
   &:before {
     content: '';
     position: absolute;
@@ -53,9 +98,52 @@
     height: 0;
     border-top: 1px solid #ccc;
   }
+  &.Select {
+    &:after {
+      content: '⌄';
+      position: absolute;
+      top: 65px;
+      right: calc(50% - 90px);
+    }
+    select {
+      appearance: none;
+      font: inherit;
+      display: block;
+      width: 100%;
+      height: 100%;
+      border: none;
+      outline: none;
+    }
+  }
+}
+
+.PriceWrapper {
+  position: relative;
 }
 
 .Coverage {
   border: 1px solid #ccc;
   position: relative;
+  margin-top: 1.5rem;
+  border-radius: 6px;
+  transition: all 233ms ease-out;
+  &.Faded {
+    margin-top: 125px;
+    opacity: 0;
+  }
+}
+
+.Button.Cancel {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0.5rem 1rem;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  outline: none;
+  &:hover {
+    transform: translateX(-50%);
+    padding-bottom: 1rem;
+  }
 }

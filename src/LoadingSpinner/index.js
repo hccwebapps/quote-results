@@ -8,7 +8,7 @@ const LoadingSpinner = () => {
       <div className="loader-holder">
         <div className="loader" />
       </div>
-      <h4>Fetching your new price...</h4>
+      <h4 style={{ display: 'block' }}>Fetching your<br />updated price</h4>
     </div>
   )
 }

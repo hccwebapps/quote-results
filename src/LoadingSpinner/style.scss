@@ -14,11 +14,11 @@
 .loader {
   font-size: 10px;
   text-indent: -9999em;
-  width: 5em;
-  height: 5em;
+  width: 6em;
+  height: 6em;
   border-radius: 50%;
   background: #999;
-  background: linear-gradient(to right, #999 10%, rgba(255, 255, 255, 0) 42%);
+  background: linear-gradient(to right, #fff 10%, rgba(255, 255, 255, 0) 42%);
   position: relative;
   animation: load3 1.4s infinite linear;
   transform: translateZ(0);
@@ -34,7 +34,7 @@
   content: '';
 }
 .loader:after {
-  background: #fff;
+  background: #999;
   width: 75%;
   height: 75%;
   border-radius: 50%;

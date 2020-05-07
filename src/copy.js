@@ -1,14 +1,16 @@
+import React from 'react'
+
 export const valueCopy = {
   liability: {
-    title: 'Liability Limit',
+    title: <span>Liability<br />Limit</span>,
     help: 'Some help copy for Damage to liability limit',
   },
   coverage_comprehensive: {
-    title: 'Comprehensive Coverage',
+    title: <span>Comprehensive<br />Coverage</span>,
     help: 'Some help copy for Damage to comprehensive coverage',
   },
   coverage_collision: {
-    title: 'Collision Coverage',
+    title: <span>Collision<br />Coverage</span>,
     help: 'Some help copy for collision coverage',
   },
 }

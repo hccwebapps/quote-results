@@ -3,22 +3,22 @@ import PickerButton from './PickerButton'
 
 import './style.scss'
 
-const Picker = ({ currentPackage, setCurrentPackage, packageSelected }) => {
+const Picker = ({ currentPackage, setCurrentPackage, packageSelected, changePackage }) => {
 
   return (
     <div className={packageSelected ? 'Picker Faded' : 'Picker'}>
       <PickerButton
-        onClick={() => setCurrentPackage('good')}
+        onClick={() => changePackage('good')}
         currentPackage={currentPackage}
         CoverageType="good"
       />
       <PickerButton
-        onClick={() => setCurrentPackage('recommended')}
+        onClick={() => changePackage('recommended')}
         currentPackage={currentPackage}
         CoverageType="recommended"
       />
       <PickerButton
-        onClick={() => setCurrentPackage('highest')}
+        onClick={() => changePackage('highest')}
         currentPackage={currentPackage}
         CoverageType="highest"
       />

@@ -1,5 +1,33 @@
 import React from 'react'
 
+export const incomeReplacement = [
+  ['no_increase', 'No increase'],
+  ['600', '$600 weekly'],
+  ['800', '$800 weekly'],
+  ['1000', '$1000 weekly'],
+]
+
+export const medical = [
+  ['no_increase', 'No increase'],
+  ['130000', <span>$130,000<br /><small>additional coverage</small></span>],
+  ['1000000', <span>$1,000,000<br /><small>additional coverage</small></span>],
+]
+
+export const medicalCatastrophic = [
+  ['no_increase', 'No increase'],
+  ['2000000', <span>$2,000,000<br /><small>additional coverage</small></span>],
+]
+
+export const caregiver = [
+  ['no_increase', 'No increase'],
+  ['all_injuries', <span><small>additional coverage for</small>All injuries</span>],
+]
+
+export const funeral = [
+  ['no_increase', 'No increase'],
+  ['increased', <span><small>Increased benefits for</small>Death & Funerals</span>],
+]
+
 const valueCovs = [
   {
     name: 'liability',
@@ -22,24 +50,6 @@ const valueCovs = [
 ]
 
 export const coverage = [
-  // {
-  //   id: 1,
-  //   name: 'deductible_comprehensive',
-  //   title: <span>Deductible<br />(Comprehensive)</span>,
-  //   help: 'Some help copy for Deductible (Comprehensive)',
-  // },
-  // {
-  //   id: 3,
-  //   name: 'deductible_collision',
-  //   title: <span>Deductible<br />(Collision)</span>,
-  //   help: 'Some help copy for Deductible (Collision)',
-  // },
-  // {
-  //   id: 5,
-  //   name: 'liability',
-  //   title: <span>$1,000,000<br />Liability</span>,
-  //   help: 'Some help copy for Liability',
-  // },
   {
     id: 1,
     name: 'standard_coverage',

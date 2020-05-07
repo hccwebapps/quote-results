@@ -4,7 +4,7 @@ import { AppContext } from 'App'
 
 import './style.scss'
 
-const Price = () => {
+const Price = ({ Simple }) => {
 
   const { priceLoading, currentPackage } = useContext(AppContext)
 
@@ -26,22 +26,44 @@ const Price = () => {
     }
   }
 
-  return (
+  return Simple ? (
+    <div className="MiniPrice clearfix">
+      <div className="BasePrice">
+        <div className="Dollar">$</div>
+        <div className="Amt">{prices[currentPackage].month}</div>
+        <div className="Per">Per<br />month</div>
+      </div>
+      <div className="PriceBreakdown">
+        <strong>${prices[currentPackage].year}</strong> per year, <strong>${prices[currentPackage].bundle}</strong> per month as part of a bundle
+      </div>
+    </div>
+  ) : (
     <div className="Price">
-      {priceLoading ? <LoadingSpinner /> : (
-        <div>
-          <div className = "BasePrice">
-            <span className = "DollarSign">$</span>
-            <span className="Amount">
-              {prices[currentPackage].month}
-            </span>
-          </div >
-          <div className="PriceBreakdown text-left">
-            Per month, <strong>${prices[currentPackage].year}</strong> per year<br />
-            <strong>${prices[currentPackage].bundle}</strong> per month as part of a bundle
+      <div className="PriceDetail">
+        {priceLoading ? (
+          <LoadingSpinner />
+        ) : (
+          <div className="BasePrice">
+            <div className="Dollar">$</div>
+            <div className="Amt">{prices[currentPackage].month}</div>
+            <div className="Per">Per<br />month</div>
           </div>
+        )}
+        <div className="PriceBreakdown">
+          {priceLoading ? (
+            <div />
+          ) : (
+            <div>
+              <div className="PerYear">
+                <strong>${ prices[currentPackage].year }</strong> per year
+              </div>
+              <span className="BundlePrice">
+                <strong>${prices[currentPackage].bundle}</strong> per month as part of a bundle
+              </span>
+            </div>
+          )}
         </div>
-      )}
+      </div>
     </div>
   )
 }
