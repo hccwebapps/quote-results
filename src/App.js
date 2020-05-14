@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Switch, Route } from 'react-router-dom'
 import Header from 'Header'
-import Home from 'Home'
+import NewHome from 'NewHome'
 import ApplyOnline from 'ApplyOnline'
 import ApplyOffline from 'ApplyOffline'
 import OntarioBenefits from 'OntarioBenefits'
@@ -65,13 +65,14 @@ const App = () => {
         <Header />
         <Switch>
           <Route exact path="/">
-            <Home
+            <NewHome />
+            {/* <Home
               vehicleIds={vehicleIds}
               currentPackage={currentPackage}
               setCurrentPackage={setCurrentPackage}
               changePackage={changePackage}
               priceLoading={priceLoading}
-            />
+            /> */}
           </Route>
           <Route path="/online">
             <ApplyOnline />
