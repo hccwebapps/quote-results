@@ -1,6 +1,15 @@
 @import 'utils.scss';
 @import 'layout.scss';
 
+:root {
+  --primary-colour: rgb(0, 83, 160);
+  --primary-colour-rgb: 0, 83, 160;
+  --secondary-colour: rgb(229, 23, 50);
+  --secondary-colour-rgb: 229, 23, 50;
+
+  --success: #77dd77;
+}
+
 * {
   box-sizing: border-box;
 }

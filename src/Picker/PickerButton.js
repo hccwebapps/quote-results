@@ -13,13 +13,13 @@ const PickerButton = ({ CoverageType, onClick, currentPackage }) => {
   const copy = () => {
     switch(CoverageType) {
       case 'good':
-        return <small>Base<br /> Coverage</small>
+        return <span>Base<br /> Coverage</span>
       case 'recommended':
-        return <small>Costco<br /> Recommended!</small>
+        return <span>Costco<br /> Recommended!</span>
       case 'highest':
-        return <small>Highest<br /> Coverage</small>
+        return <span>Highest<br /> Coverage</span>
       default:
-        return <small>No coverage type provided</small>
+        return <span>No coverage type provided</span>
     }
   }
 

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Switch, Route } from 'react-router-dom'
 import Header from 'Header'
 import Home from 'Home'
@@ -20,10 +20,9 @@ const App = () => {
     if (vehicleIds.length < 4) {
       const lastId = Math.max(...vehicleIds)
       setVehicleIds(prevState => {
-        return [
-          ...prevState,
-          lastId + 1,
-        ]
+        let next = [...prevState, lastId + 1]
+        localStorage.setItem('vehicles', JSON.stringify(next))
+        return next
       })
     }
   }
@@ -33,6 +32,7 @@ const App = () => {
       setVehicleIds(prevState => {
         const next = [...prevState]
         next.pop()
+        localStorage.setItem('vehicles', JSON.stringify(next))
         return next
       })
     }
@@ -45,6 +45,13 @@ const App = () => {
       setPriceLoading(false)
     }, 2000)
   }
+
+  useEffect(() => {
+    const vehicles = localStorage.getItem('vehicles')
+    if (vehicles && vehicles.length > 0) {
+      setVehicleIds(JSON.parse(vehicles))
+    }
+  }, [])
 
   return (
     <AppContext.Provider value={{

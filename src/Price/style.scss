@@ -1,48 +1,8 @@
-// .Price {
-//   background: #999;
-//   color: #fff;
-//   border-radius: 10px;
-//   border-top-right-radius: 40px;
-//   border-bottom-right-radius: 40px;
-//   margin: 2rem 10px 3rem 0;
-//   .PriceDetail {
-//     width: 50%;
-//     margin-left: 15%;
-//     text-align: center;
-//     padding-bottom: 0.5rem;
-//     .BasePrice {
-//       border-bottom: 1px solid #ccc;
-//       margin-bottom: 5px;
-//       .Dollar {
-//         margin-top: 12px;
-//         display: inline-block;
-//         font-size: 16px;
-//         vertical-align: top;
-//       }
-//       .Amt {
-//         display: inline-block;
-//         font-size: 50px;
-//         font-weight: 600;
-//         margin-right: 6px;
-//       }
-//       .Per {
-//         text-align: left;
-//         display: inline-block;
-//         font-size: 15px;
-//         line-height: 15px;
-//       }
-//     }
-//   }
-//   .PriceBreakdown {
-//     font-size: 0.8rem;
-//   }
-// }
-
 .Price {
-  background: #999;
+  background: var(--primary-colour);
   width: 245px;
   height: 245px;
-  margin: 0 auto 2rem auto;
+  margin: 0 auto 5rem auto;
   border-radius: 150px;
   text-align: center;
   color: #fff;
@@ -123,6 +83,6 @@
 }
 
 @keyframes shadow {
-  0%   { box-shadow: 0 0 0 0 rgba(0,0,0,0.1) }
-  100% { box-shadow: 0 0 0 35px rgba(0,0,0,0.01) }
+  0%   { box-shadow: 0 0 0 0 rgba(var(--primary-colour-rgb), 0.35) }
+  100% { box-shadow: 0 0 0 30px rgba(var(--primary-colour-rgb), 0.025) }
 }

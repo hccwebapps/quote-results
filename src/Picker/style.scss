@@ -1,67 +1,114 @@
 .Picker {
-  position: relative;
-  height: 70px;
-  margin: 0 12% 0 12%;
-  transition: opacity 300ms ease-out;
-  &.Faded {
-    opacity: 0.25;
-  }
-}
-
-.PickerButton {
   position: absolute;
-  top: -12px;
-  width: 100px;
-  border: none;
-  background: transparent;
-  outline: none;
-  small {
-    display: block;
-    padding-top: 10px;
-    color: #aaa;
-  }
-  &.Good { left: -50px }
-  &.Better {
-    left: 50%;
-    transform: translateX(-50%);
-  }
-  &.Best { right: -50px }
-  &:before {
-    content: '';
+  top: -50px;
+  width: 100%;
+  text-align: center;
+  .PickerButton {
     display: inline-block;
-    width: 20px;
-    height: 20px;
-    background-color: #ccc;
-    border-radius: 10px;
-    transition: background-color 200ms ease-out;
-  }
-  &.Active {
-    small {
-      color: #999;
-      font-weight: bold;
-    }
-    &:before {
-      background-color: #999;
-      animation: pulse 0.5s normal forwards ease-in-out;
-      transform: scale(1.3);
+    border: 1px solid rgba(var(--primary-colour-rgb), 0.5);
+    background: #f4f9fd;
+    vertical-align: bottom;
+    padding: 0.25rem 0.75rem;
+    border-radius: 6px;
+    color: rgba(var(--primary-colour-rgb), 0.5);
+    outline: none;
+    &.Active {
+      color: var(--primary-colour);
     }
     &:hover {
-      &:before {
-        transform: scale(1.3);
-      }
+      cursor: pointer;
+      color: var(--primary-colour);
+      background: #f9fcff;
     }
   }
-  &:hover {
-    cursor: pointer;
-    &:before {
-      background-color: #888;
-      transform: scale(1.1);
+  .PickerButton.Good {
+    position: relative;
+    top: -6px;
+    border-right: none;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+  .PickerButton.Better {
+    span {
+      display: inline-block;
+      font-size: 1.05rem;
+      font-weight: 600;
+      padding: 0.5rem 0.75rem;
     }
+  }
+  .PickerButton.Best {
+    position: relative;
+    top: -6px;
+    border-left: none;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
   }
 }
 
-@keyframes pulse {
-  0%  { transform: scale(1) }
-  42% { transform: scale(1.5) }
-  80% { transform: scale(1.3) }
-}
+// .Picker {
+//   position: relative;
+//   height: 70px;
+//   margin: 0 12% 0 12%;
+//   transition: opacity 300ms ease-out;
+//   &.Faded {
+//     opacity: 0.25;
+//   }
+// }
+
+// .PickerButton {
+//   position: absolute;
+//   top: -12px;
+//   width: 100px;
+//   border: none;
+//   background: transparent;
+//   outline: none;
+//   small {
+//     display: block;
+//     padding-top: 10px;
+//     color: #aaa;
+//   }
+//   &.Good { left: -50px }
+//   &.Better {
+//     left: 50%;
+//     transform: translateX(-50%);
+//   }
+//   &.Best { right: -50px }
+//   &:before {
+//     content: '';
+//     display: inline-block;
+//     width: 20px;
+//     height: 20px;
+//     background-color: rgba(var(--primary-colour-rgb), 0.5);
+//     border-radius: 10px;
+//     transition: background-color 200ms ease-out;
+//   }
+//   &.Active {
+//     small {
+//       color: #999;
+//       font-weight: bold;
+//     }
+//     &:before {
+//       background-color: var(--primary-colour);
+//       animation: pulse 0.5s normal forwards ease-in-out;
+//       transform: scale(1.3);
+//     }
+//     &:hover {
+//       &:before {
+//         transform: scale(1.3);
+//       }
+//     }
+//   }
+//   &:hover {
+//     cursor: pointer;
+//     &:before {
+//       background-color: #888;
+//       transform: scale(1.1);
+//     }
+//   }
+// }
+
+// @keyframes pulse {
+//   0%  { transform: scale(1) }
+//   42% { transform: scale(1.5) }
+//   80% { transform: scale(1.3) }
+// }

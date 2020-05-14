@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import Price from 'Price'
 import Picker from 'Picker'
 import Button from 'Button'
+import CoverageRow from 'CoverageRow'
 import SingleVehicle from 'SingleVehicle'
 import useVehicles from 'useVehicles'
 
@@ -78,6 +79,31 @@ const Home = ({ vehicleIds, currentPackage, setCurrentPackage, changePackage, pr
           />
         )}
       </div>
+      {/* <div>
+        <table id="CovTable">
+          <tbody>
+            <tr>
+              <th></th>
+              <th>Liability</th>
+              <th>Comprehensive Coverage</th>
+              <th>Collision Coverage</th>
+              <th>Standard Benefits</th>
+              <th>Damage to Non-Owner Autos</th>
+              <th>Depreciation Waiver</th>
+              <th>Accident Waiver</th>
+              <th>Transportation Relacement</th>
+              <th>Restriction of Glass Coverage</th>
+            </tr>
+            {vehicles.map(v =>
+              <CoverageRow
+                key={v.id}
+                vehicle={v}
+                currentPackage={currentPackage}
+              />
+            )}
+          </tbody>
+        </table>
+      </div> */}
       {buying &&
         <Button className="Cancel" onClick={() => setBuying(false)}>
           Go back and<br />Modify Coverage

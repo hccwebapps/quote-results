@@ -1,7 +1,6 @@
 import React from 'react'
 import Price from 'Price'
 import Choice from 'Choice'
-import Button from 'Button'
 import ContactForm from 'ContactForm'
 
 import './style.scss'

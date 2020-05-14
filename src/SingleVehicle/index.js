@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import useCoverage from 'useCoverage'
 import CoverageTable from 'CoverageTable'
 
@@ -12,6 +12,9 @@ const SingleVehicle = ({ vehicle, currentPackage, visibleVehicle }) => {
 
   return (
     <div className={isVisible ? 'Vehicle Visible' : 'Vehicle'}>
+      <div className="VehicleTitle">
+        <span>{vehicle.year} {vehicle.make} {vehicle.model}</span>
+      </div>
       <CoverageTable
         valueCoverage={valueCoverage}
         booleanCoverage={booleanCoverage}

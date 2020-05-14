@@ -1,5 +1,6 @@
 .LoadingSpinner {
   text-align: center;
+  height: 95px;
   .loader-holder {
     display: inline-block;
     vertical-align: middle;
@@ -26,7 +27,7 @@
 .loader:before {
   width: 50%;
   height: 50%;
-  background: #999;
+  background: var(--primary-colour);
   border-radius: 100% 0 0 0;
   position: absolute;
   top: 0;
@@ -34,7 +35,7 @@
   content: '';
 }
 .loader:after {
-  background: #999;
+  background: var(--primary-colour);
   width: 75%;
   height: 75%;
   border-radius: 50%;

@@ -8,8 +8,8 @@ const Item = ({ name, value, isBoolean, setHelpItem, New }) => {
   const [changed, setChanged] = useState(false)
 
   const isDisabled = () => {
-    if (name === 'waiver_depreciation') {
-      if (!New) {
+    if (isBoolean) {
+      if (!value) {
         return true
       }
     }
@@ -18,6 +18,9 @@ const Item = ({ name, value, isBoolean, setHelpItem, New }) => {
   const cls = classNames('Item', {
     'Updated': changed,
     'Boolean': isBoolean,
+    'Liability': name === 'liability',
+    'ValueItem': name === 'coverage_collision' || name === 'coverage_comprehensive',
+    'NonLiability': name !== 'liability',
     'Disabled': isDisabled(),
   })
 
@@ -28,29 +31,29 @@ const Item = ({ name, value, isBoolean, setHelpItem, New }) => {
     }, 2000)
   }, [value])
 
-  if (isDisabled()) {
+  if (name === 'liability') {
     return (
       <div className={cls}>
-        <span>Depreciation waiver <i>+</i></span>
-        <small>Older vehicles not eligible</small>
+        <strong>${value} Liability Limit</strong> <Button onClick={() => setHelpItem(name)}>?</Button>
       </div>
     )
   }
 
   return (
     <div className={cls}>
-      {!isBoolean && <Button onClick={() => setHelpItem(name)}>?</Button>}
+      <div>
+        <Button onClick={() => setHelpItem(name)}>?</Button>
+      </div>
       {isBoolean ? (
         value ?
-          <span>{booleanCopy[name].title}</span> :
-          <strike>{booleanCopy[name].title}</strike>
+          <p className="CovLabel">{booleanCopy[name].title}</p> :
+          <p className= "CovLabel"><strike>{booleanCopy[name].title}</strike></p>
       ) : (
-        <span>
-          <small>{valueCopy[name].title}</small>
-          <span>${value}</span>
-        </span>
+        <div>
+          <p className="CovLabel">{valueCopy[name].title}</p>
+          <strong>${value}</strong>
+        </div>
       )}
-      {isBoolean && <Button onClick={() => setHelpItem(name)}>?</Button>}
     </div>
   )
 }

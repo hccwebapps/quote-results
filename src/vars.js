@@ -28,27 +28,6 @@ export const funeral = [
   ['increased', <span><small>Increased benefits for</small>Death & Funerals</span>],
 ]
 
-const valueCovs = [
-  {
-    name: 'liability',
-    value: '2000000',
-    title: 'Liability Limit',
-    help: 'Some help copy for Damage to liability limit',
-  },
-  {
-    name: 'coverage_comprehensive',
-    value: '500',
-    title: 'Comprehensive Coverage',
-    help: 'Some help copy for Damage to comprehensive coverage',
-  },
-  {
-    name: 'coverage_collision',
-    value: '500',
-    title: 'Collision Coverage',
-    help: 'Some help copy for collision coverage',
-  },
-]
-
 export const coverage = [
   {
     id: 1,
