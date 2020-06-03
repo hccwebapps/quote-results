@@ -3,22 +3,36 @@ import PickerButton from './PickerButton'
 
 import './style.scss'
 
-const Picker = ({ currentPackage, setCurrentPackage, packageSelected, changePackage }) => {
+const Picker = ({ currentPackage, setPackageAndDelta }) => {
+
+  const setNext = pack => {
+    if (currentPackage === 'good') {
+      setPackageAndDelta(pack, 'up')
+    } else if (currentPackage === 'highest') {
+      setPackageAndDelta(pack, 'down')
+    } else if (currentPackage === 'recommended') {
+      if (pack === 'good') {
+        setPackageAndDelta(pack, 'down')
+      } else {
+        setPackageAndDelta(pack, 'up')
+      }
+    }
+  }
 
   return (
-    <div className={packageSelected ? 'Picker Faded' : 'Picker'}>
+    <div className={'Picker'}>
       <PickerButton
-        onClick={() => changePackage('good')}
+        onClick={() => setNext('good')}
         currentPackage={currentPackage}
         CoverageType="good"
       />
       <PickerButton
-        onClick={() => changePackage('recommended')}
+        onClick={() => setNext('recommended')}
         currentPackage={currentPackage}
         CoverageType="recommended"
       />
       <PickerButton
-        onClick={() => changePackage('highest')}
+        onClick={() => setNext('highest')}
         currentPackage={currentPackage}
         CoverageType="highest"
       />

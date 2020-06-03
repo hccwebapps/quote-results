@@ -1,84 +1,197 @@
 .CoverageTable {
-  text-align: center;
-}
-
-.Item {
-  .CovLabel {
-    padding: 0.25rem 0;
+  .Item {
+    padding: 8px 10px 6px;
+    font-size: 0.9rem;
+    border-top: 1px solid #ccc;
+    h4 {
+      margin: 0 0 5px 0;
+      color: var(--primary-colour);
+    }
+    strong {
+      float: right;
+      color: var(--secondary-colour);
+    }
+    .HelpCopy {
+      display: block;
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+      transition: max-height 0.5s ease-out, opacity 0.25s ease-out;
+      color: #999;
+      line-height: 1.35;
+      &.Active {
+        max-height: 125px;
+        transition: max-height 0.5s ease-out, opacity 0.25s ease-out;
+        opacity: 1;
+      }
+    }
+    &.Disabled {
+      h4 {
+        color: #999;
+      }
+    }
   }
 }
 
-.Item.Liability .Button,
-.Item.NonLiability .Button {
-  width: 22px;
-  height: 22px;
-  border-radius: 11px;
-  background: rgba(var(--primary-colour-rgb), 0.1);
-  border: 1px solid rgba(var(--primary-colour-rgb), 0.4);
-  color: rgba(var(--primary-colour-rgb), 0.75);
-  outline: none;
-  transition: border-color 200ms ease-out;
-}
-
-.Item.Liability {
-  font-size: 1.25rem;
-  color: var(--primary-colour);
-  margin-bottom: 0.5rem;
-  strong {
-    display: inline-block;
-    vertical-align: middle;
-  }
-  .Button {
-    vertical-align: middle;
-  }
-}
-
-.Item.NonLiability {
-  display: inline-block;
-  width: 45%;
-  padding: 0.75rem;
-  border: 1px solid #f1f1f1;
-  margin: 1%;
-  border-radius: 6px;
-  &.ValueItem {
-    min-height: 100px;
-  }
-  p,
-  strike {
-    margin: 0;
-    font-size: 0.8rem;
-    line-height: 1.25;
+.Ineligible {
+  margin-bottom: 8px;
+  span {
+    display: block;
+    color: #888;
+    line-height: 1.65;
+    font-size: 0.85rem;
+    &:before {
+      content: '✔︎';
+      display: inline-block;
+      width: 20px;
+      color: var(--success);
+      margin-left: 5px;
+    }
+    &:last-child {
+      &:before {
+        content: 'x';
+        font-weight: 600;
+        color: var(--secondary-colour);
+      }
+    }
   }
 }
 
-.Updated {
-  border-color: var(--success) !important;
+.Item.Disabled {
+  .Ineligible {
+    display: none;
+  }
 }
 
-.CovHelp {
-  padding: 0.5rem;
-  font-size: 0.9rem;
+.Item.Increased {
+  animation: increaseFade 2s forwards ease-out;
 }
 
-@keyframes tada {
-  from {
-    transform: scale3d(1, 1, 1);
-    color: #31b67b;
-  }
-  10%,
-  20%  {
-    transform: scale3d(0.9, 0.9, 0.9) rotate3d(0, 0, 1, -2deg);
-    color: #31b67b;
-  }
-  30%,
-  50%,
-  70%,
-  90%  {
-    transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 2deg);
-    color: #31b67b;
-  }
-  40%,
-  60%,
-  80%  { transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -2deg) }
-  to   { transform: scale3d(1, 1, 1) }
+.Item.Decreased {
+  animation: decreaseFade 2s forwards ease-out;
 }
+
+@keyframes increaseFade {
+  0% {
+    background-color: #d0f5df;
+  }
+  100% {
+    background-color: #fff;
+  }
+}
+
+@keyframes decreaseFade {
+  0% {
+    background-color: #f1f1f1;
+  }
+  100% {
+    background-color: #fff;
+  }
+}
+
+// .CoverageTable {
+//   text-align: center;
+// }
+
+// .Item {
+//   .CovLabel {
+//     padding: 0.25rem 0;
+//   }
+// }
+
+// .Item.Liability .Button,
+// .Item.NonLiability .Button {
+//   width: 22px;
+//   height: 22px;
+//   border-radius: 11px;
+//   background: rgba(var(--primary-colour-rgb), 0.1);
+//   border: 1px solid rgba(var(--primary-colour-rgb), 0.4);
+//   color: rgba(var(--primary-colour-rgb), 0.75);
+//   outline: none;
+// }
+
+// .Item.Liability {
+//   font-size: 1.25rem;
+//   color: var(--primary-colour);
+//   margin-bottom: 0.5rem;
+//   strong {
+//     display: inline-block;
+//     vertical-align: middle;
+//   }
+//   .Button {
+//     vertical-align: middle;
+//   }
+// }
+
+// .Item.NonLiability {
+//   display: inline-block;
+//   width: 45%;
+//   padding: 0.75rem;
+//   margin: 1%;
+//   border-radius: 6px;
+//   &.ValueItem {
+//     min-height: 100px;
+//   }
+//   p,
+//   strike {
+//     margin: 0;
+//     font-size: 0.8rem;
+//     line-height: 1.25;
+//   }
+// }
+
+// .Item.NonLiability {
+//   border: 1px solid rgba(var(--primary-colour-rgb), 0.3);
+//   transition: border 200ms ease-out;
+//   &.Updated {
+//     border-color: green;
+//   }
+//   &.Disabled {
+//     &.Updated {
+//       border-color: red;
+//     }
+//   }
+// }
+
+// .Item.WaiverDisabled {
+//   transform: scale(0.9);
+//   border-color: #ccc !important;
+//   opacity: 0.75;
+//   &:after {
+//     content: '+';
+//     position: absolute;
+//     transform: rotate(45deg);
+//     top: 5px;
+//     right: 10px;
+//     font-size: 1.2rem;
+//     color: red;
+//   }
+// }
+
+// .CovHelp {
+//   padding: 0.5rem;
+//   font-size: 0.9rem;
+// }
+
+// @keyframes tada {
+//   from {
+//     transform: scale3d(1, 1, 1);
+//     color: #31b67b;
+//   }
+//   10%,
+//   20%  {
+//     transform: scale3d(0.9, 0.9, 0.9) rotate3d(0, 0, 1, -2deg);
+//     color: #31b67b;
+//   }
+//   30%,
+//   50%,
+//   70%,
+//   90%  {
+//     transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 2deg);
+//     color: #31b67b;
+//   }
+//   40%,
+//   60%,
+//   80%  { transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -2deg) }
+//   to   { transform: scale3d(1, 1, 1) }
+// }

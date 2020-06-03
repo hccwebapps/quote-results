@@ -4,7 +4,7 @@ import Nav from 'Nav'
 
 import './style.scss'
 
-const Header = () => {
+const Header = ({ Full }) => {
   return (
     <div className="Header">
       <div className="clearfix">
@@ -13,7 +13,7 @@ const Header = () => {
         </Link>
         <img className="costco" src={process.env.PUBLIC_URL + '/img/costco-logo.png'} alt="Costco" />
       </div>
-      <Nav />
+      {Full && <Nav />}
     </div>
   )
 }

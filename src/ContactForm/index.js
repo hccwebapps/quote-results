@@ -25,8 +25,8 @@ const ContactForm = ({ submit, toLink }) => {
         </div>
         <div className="text-center">
           {toLink ?
-            <Button Submit to={toLink}>Continue</Button> :
-            <Button Submit>Finish & Submit</Button>
+            <Button Submit to={toLink} className="Success">Continue</Button> :
+            <Button Submit className="Success">Finish & Submit</Button>
           }
         </div>
       </form>

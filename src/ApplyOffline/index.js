@@ -1,4 +1,5 @@
 import React from 'react'
+import { useHistory } from 'react-router-dom'
 import Price from 'Price'
 import Choice from 'Choice'
 import ContactForm from 'ContactForm'
@@ -7,9 +8,11 @@ import './style.scss'
 
 const ApplyOffline = () => {
 
+  let history = useHistory()
+
   const submit = e => {
     e.preventDefault()
-    console.log('submit')
+    history.push("/offline-received")
   }
 
   return (

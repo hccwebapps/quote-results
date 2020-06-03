@@ -1,9 +1,11 @@
-import React from 'react'
+import React, { useState, useContext, useEffect } from 'react'
+import { useHistory } from 'react-router-dom'
 import Price from 'Price'
 import Choice from 'Choice'
 import RadioGroup from 'RadioGroup'
 import Button from 'Button'
 import useForm from 'useForm'
+import { AppContext } from 'App'
 import {
   incomeReplacement, medical, medicalCatastrophic,
   caregiver, funeral,
@@ -11,17 +13,56 @@ import {
 
 import './style.scss'
 
-const OntarioBenefits = () => {
+const OntarioBenefits = ({ setModalActive }) => {
+
+  let history = useHistory()
+
+  const [oabActive, setOabActive] = useState('')
+
+  const { oabsChanged, setOabsChanged } = useContext(AppContext)
 
   const { data, setValue } = useForm({})
+
+  const anyIncreased = Object.keys(data).filter(x => {
+    return data[x] !== 'no_increase' && data[x] !== 'no'
+  }).length > 0
+
+  useEffect(() => {
+    setOabsChanged(anyIncreased)
+  }, [data])
+
+  const handleSubmit = e => {
+    e.preventDefault()
+    if (oabsChanged) {
+      setOabsChanged(false)
+    } else if (!anyIncreased) {
+      setModalActive(true)
+    } else {
+      history.push('/offline-received')
+    }
+  }
+
+  const oabActiveClick = (e, oab) => {
+    e.preventDefault()
+    const oabToSet = oab === oabActive ? '' : oab 
+    setOabActive(oabToSet)
+  }
 
   return (
     <div className="OAB">
       <Price Simple />
       <form>
         <div className="benefit-field">
-          <strong>Income Replacement</strong>
-          <p>With income replacement you can have peace of mind with regards to your car payments.</p>
+          <strong>
+            <Button onClick={e => oabActiveClick(e, 'income_replacement')} className="Small Rounded ShowHelp">?</Button>
+            Income Replacement
+          </strong>
+          <p>Income Replacement replaces up to 70% of your gross income if you cannot work due to an auto accident.</p>
+          <div className={oabActive === 'income_replacement' ? 'HelpCopy Active' : 'HelpCopy'}>
+            <small>
+              Standard coverage on your auto policy is up to $400 a week. Please select an increased optional amount in the drop down if required.
+            </small>
+          </div>
           <RadioGroup
             name="income_replacement"
             choices={incomeReplacement}
@@ -32,8 +73,16 @@ const OntarioBenefits = () => {
           />
         </div>
         <div className="benefit-field">
-          <strong>Medical, Rehabilitation and Attendant Care (Non-Catastrophic Injury)</strong>
-          <p>Provides additional coverage should you suffer a non-catastrophic injury.</p>
+          <strong>
+            <Button onClick={e => oabActiveClick(e, 'medical')} className="Small Rounded ShowHelp">?</Button>
+            Medical, Rehabilitation and Attendant Care (Non-Catastrophic Injury)
+          </strong>
+          <p>Reimbursement for medical and rehabilitation costs that are not covered by OHIP.</p>
+          <div className={oabActive === 'medical' ? 'HelpCopy Active' : 'HelpCopy'}>
+            <small>
+              Attendant care is reimbursement for an attendant to care for you if you are unable. Standard coverage provides up to $65,000 for non-catastrophic injuries. Please select an increased optional amount in the drop down if required.
+          </small>
+          </div>
           <RadioGroup
             name="medical"
             choices={medical}
@@ -43,8 +92,16 @@ const OntarioBenefits = () => {
           />
         </div>
         <div className="benefit-field">
-          <strong>Medical, Rehabilitation and Attendant Care (Catastrophic Injury)</strong>
-          <p>Provides additional coverage should you suffer a catastrophic injury.</p>
+          <strong>
+            <Button onClick={e => oabActiveClick(e, 'medical_catastrophic')} className="Small Rounded ShowHelp">?</Button>
+            Medical, Rehabilitation and Attendant Care (Catastrophic Injury)
+          </strong>
+          <p>Reimbursement for medical and rehabilitation costs that are not covered by OHIP.</p>
+          <div className={oabActive === 'medical_catastrophic' ? 'HelpCopy Active' : 'HelpCopy'}>
+            <small>
+              Attendant care is reimbursement for an attendant to care for you if you are unable. Standard coverage provides up to $1,000,000 for catastrophic injuries. Please select an increased optional amount if required.
+          </small>
+          </div>
           <RadioGroup
             name="medical_catastrophic"
             choices={medicalCatastrophic}
@@ -54,8 +111,16 @@ const OntarioBenefits = () => {
           />
         </div>
         <div className="benefit-field">
-          <strong>Caregiver Benefit & Housekeeping and Home Maintenance Expenses</strong>
-          <p>Increased coverage for caregivers, housekeeping and home maintenance.</p>
+          <strong>
+            <Button onClick={e => oabActiveClick(e, 'caregiver')} className="Small Rounded ShowHelp">?</Button>
+            Caregiver Benefit & Housekeeping and Home Maintenance Expenses
+          </strong>
+          <p>Reimbursement to hire someone to care for your dependents or take care of your household if you are injured in an auto accident.</p>
+          <div className={oabActive === 'caregiver' ? 'HelpCopy Active' : 'HelpCopy'}>
+            <small>
+              Standard coverage is for catastrophic injuries and includes up to $250/week for your first dependent, $50/week for additional dependents, and up to $100 week for housekeeping. If you would like coverage for non-catastrophic injuries, please select "All Injuries".
+          </small>
+          </div>
           <RadioGroup
             name="caregiver"
             choices={caregiver}
@@ -65,8 +130,16 @@ const OntarioBenefits = () => {
           />
         </div>
         <div className="benefit-field">
-          <strong>Death & Funeral</strong>
-          <p>Additional peace of mind for costs relating to death or funerals.</p>
+          <strong>
+            <Button onClick={e => oabActiveClick(e, 'funeral')} className="Small Rounded ShowHelp">?</Button>
+            Death & Funeral
+          </strong>
+          <p>A lump sum payout to your family if you pass away in an auto accident, and a second payout to help cover cost of funeral expenses.</p>
+          <div className={oabActive === 'funeral' ? 'HelpCopy Active' : 'HelpCopy'}>
+            <small>
+              Standard coverage includes a $25,000 lump sum for a spouse, $10,000 for each dependent, and up to $6,000 for funeral expenses. If you would like to increase this coverage to $50,000 for spouse, $20,000 for each dependent, and up to $8,000 funeral, please select "Increased Benefits".
+          </small>
+          </div>
           <RadioGroup
             name="funeral"
             choices={funeral}
@@ -76,8 +149,16 @@ const OntarioBenefits = () => {
           />
         </div>
         <div className="benefit-field">
-          <strong>Dependent Care</strong>
-          <p>Additional coverage for your dependents in the event of an automobile accident.</p>
+          <strong>
+            <Button onClick={e => oabActiveClick(e, 'dependent')} className="Small Rounded ShowHelp">?</Button>
+            Dependent Care
+          </strong>
+          <p>Reimbursement for additional expenses to care for your dependents if you’re employed and injured in an auto accident.</p>
+          <div className={oabActive === 'dependent' ? 'HelpCopy Active' : 'HelpCopy'}>
+            <small>
+              Dependent Care is not included in Standard Coverage. If you chose to purchase this coverage, it includes up to $75 per week for your first dependent and $25 per week for additional dependents to a max of $150 a week.
+          </small>
+          </div>
           <RadioGroup
             name="dependent"
             choices={[['no', 'No Increase'], ['yes', 'Increased benefits']]}
@@ -88,7 +169,7 @@ const OntarioBenefits = () => {
         </div>
         <div className="benefit-field">
           <strong>Indexation Benefit</strong>
-          <p>Additional coverage for indexation, whatever that is.</p>
+          <p>Adjusts increased optional benefits for changes in inflation.</p>
           <RadioGroup
             name="indexation"
             choices={[
@@ -101,7 +182,9 @@ const OntarioBenefits = () => {
           />
         </div>
         <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
-          <Button Submit to="/online">Continue</Button>
+          <Button onClick={handleSubmit} className="Large Rounded Success">
+            {oabsChanged ? 'Recalculate' : 'Continue'}
+          </Button>
         </div>
       </form>
       <Choice />

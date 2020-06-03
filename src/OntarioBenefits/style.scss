@@ -4,6 +4,18 @@
     p {
       font-size: 0.9rem;
     }
+    strong {
+      color: var(--primary-colour);
+      .ShowHelp {
+        float: right;
+        margin-right: 15px;
+        background: rgba(var(--primary-colour-rgb), 0.35);
+        width: 30px;
+        height: 30px;
+        border-radius: 15px;
+        margin-top: -5px;
+      }
+    }
     .field-group {
       label {
         float: right;
@@ -26,6 +38,32 @@
         small {
           display: block;
         }
+        &:hover {
+          cursor: pointer;
+          background: #e1e1e1;
+        }
+      }
+    }
+    // .ShowHelp {
+    //   float: left;
+    //   margin-right: 15px;
+    //   background: rgba(var(--primary-colour-rgb), 0.35);
+    //   width: 30px;
+    //   height: 30px;
+    //   border-radius: 15px;
+    // }
+    .HelpCopy {
+      display: block;
+      color: #999;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s ease-out;
+      small {
+        display: inline-block;
+        margin-bottom: 1rem;
+      }
+      &.Active {
+        max-height: 100px;
       }
     }
   }

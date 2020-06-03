@@ -7,8 +7,32 @@
     margin-right: 15px;
   }
   h4 {
+    display: block;
+  }
+}
+
+.LoadingSpinner.Simple {
+  height: 49px;
+  text-align: left;
+  padding-top: 10px;
+  .loader-holder {
     display: inline-block;
     vertical-align: middle;
+    .loader {
+      width: 3em;
+      height: 3em;
+      &:after {
+        background: #fff;
+      }
+    }
+  }
+  h4 {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0;
+    br {
+      display: none;
+    }
   }
 }
 
@@ -47,6 +71,9 @@
   bottom: 0;
   right: 0;
 }
+
+
+
 @-webkit-keyframes load3 {
   0% { transform: rotate(0deg) }
   100% { transform: rotate(360deg) }

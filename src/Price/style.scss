@@ -1,86 +1,207 @@
 .Price {
   background: var(--primary-colour);
-  width: 245px;
-  height: 245px;
-  margin: 0 auto 5rem auto;
+  width: 246px;
+  height: 246px;
   border-radius: 150px;
   text-align: center;
   color: #fff;
-  padding-top: 40px;
   animation-name: shadow;
   animation-duration: 3s;
   animation-iteration-count: infinite;
-  .BasePrice {
-    border-bottom: 1px solid #ccc;
-    margin: 0 1rem 15px 1rem;
-    .Dollar {
-      margin-top: 18px;
-      display: inline-block;
-      font-size: 16px;
-      vertical-align: top;
-    }
+  margin: 0 auto 2rem auto;
+  padding: 50px 20px 0;
+  font-weight: 500;
+  .Amt {
+    display: inline-block;
+    font-weight: 600;
+  }
+  .Dollar {
+    display: inline-block;
+    font-size: 1rem;
+    line-height: 3;
+    vertical-align: top;
+  }
+  .Per {
+    display: inline-block;
+    text-transform: uppercase;
+    text-align: left;
+  }
+  .Monthly {
+    border-bottom: 1px solid #fff;
     .Amt {
-      display: inline-block;
-      font-size: 65px;
-      font-weight: 600;
-      margin-right: 6px;
-    }
-    .Per {
-      text-align: left;
-      display: inline-block;
-      font-size: 15px;
-      line-height: 15px;
+      font-size: 4rem;
+      margin-right: 5px;
     }
   }
-  .PriceBreakdown {
-    .PerYear {
-      font-size: 1.1rem;
-      margin-bottom: 5px;
+  .Yearly {
+    color: rgba(255,255,255,0.7);
+    .Dollar {
+      line-height: 2;
     }
-    .BundlePrice {
-      display: inline-block;
-      margin-left: 50px;
-      margin-right: 50px;
+    .Amt {
+      font-size: 2.5rem;
+      margin-right: 5px;
+    }
+    .Per {
+      font-size: 0.8rem;
     }
   }
 }
 
-.MiniPrice {
+.MLD {
+  height: 40px;
+  color: #999;
+  margin-bottom: 5rem;
+  transition: height 127ms ease-out;
+  overflow: hidden;
+  &.Buying {
+    height: 0;
+    margin-bottom: 3rem;
+  }
+}
+
+.PriceSimple {
   position: sticky;
   top: 0;
   border-bottom: 1px solid #ccc;
   margin-bottom: 3rem;
   background: #fff;
-  box-shadow: 0 5px 10px rgba(255, 255, 255, 0.9);
-  .BasePrice {
+  height: 50px;
+  .Monthly {
     float: left;
-    .Dollar {
-      margin-top: 12px;
-      display: inline-block;
-      font-size: 16px;
-      vertical-align: top;
-    }
-    .Amt {
-      display: inline-block;
-      font-size: 50px;
-      font-weight: 600;
-      margin-right: 6px;
-    }
-    .Per {
-      text-align: left;
-      display: inline-block;
-      font-size: 15px;
-      line-height: 15px;
-    }
   }
-  .PriceBreakdown {
-    font-size: 0.9rem;
-    margin-top: 18px;
+  .Yearly {
     float: right;
-    width: 48%;
-    text-align: right;
+  }
+  .Dollar {
+    font-size: 0.8rem;
+    display: inline-block;
+  }
+  .Amt {
+    font-size: 40px;
+    display: inline-block;
+    font-weight: 600;
+    margin-right: 5px;
+    color: var(--primary-colour);
+  }
+  .Per {
+    font-size: 12px;
+    display: inline-block;
+    text-transform: uppercase;
   }
 }
+
+.CoverageChanged {
+  display: inline-block;
+  width: 100%;
+  color: #999;
+  margin: 0;
+  padding: 5px 2rem 8px 2rem;
+  text-align: center;
+  vertical-align: middle;
+}
+
+// .Price {
+//   background: var(--primary-colour);
+//   width: 245px;
+//   height: 245px;
+//   margin: 0 auto 5rem auto;
+//   border-radius: 150px;
+//   text-align: center;
+//   color: #fff;
+//   padding-top: 40px;
+//   animation-name: shadow;
+//   animation-duration: 3s;
+//   animation-iteration-count: infinite;
+//   .BasePrice {
+//     border-bottom: 1px solid #ccc;
+//     margin: 0 1rem 15px 1rem;
+//     .Dollar {
+//       margin-top: 18px;
+//       display: inline-block;
+//       font-size: 16px;
+//       vertical-align: top;
+//     }
+//     .Amt {
+//       display: inline-block;
+//       font-size: 65px;
+//       font-weight: 600;
+//       margin-right: 6px;
+//     }
+//     .Per {
+//       text-align: left;
+//       display: inline-block;
+//       font-size: 15px;
+//       line-height: 15px;
+//     }
+//   }
+//   .PriceBreakdown {
+//     .PerYear {
+//       font-size: 1.1rem;
+//       margin-bottom: 5px;
+//     }
+//     .BundlePrice {
+//       display: inline-block;
+//       margin-left: 50px;
+//       margin-right: 50px;
+//     }
+//   }
+// }
+
+// .MiniPrice {
+//   position: sticky;
+//   top: 0;
+//   border-bottom: 1px solid #ccc;
+//   margin-bottom: 3rem;
+//   background: #fff;
+//   box-shadow: 0 5px 10px rgba(255, 255, 255, 0.9);
+//   .BasePrice {
+//     float: left;
+//     .Dollar {
+//       margin-top: 12px;
+//       display: inline-block;
+//       font-size: 16px;
+//       vertical-align: top;
+//     }
+//     .Amt {
+//       display: inline-block;
+//       font-size: 50px;
+//       font-weight: 600;
+//       margin-right: 6px;
+//     }
+//     .Per {
+//       text-align: left;
+//       display: inline-block;
+//       font-size: 15px;
+//       line-height: 15px;
+//     }
+//   }
+//   .PriceBreakdown {
+//     font-size: 0.9rem;
+//     margin-top: 18px;
+//     float: right;
+//     width: 48%;
+//     text-align: right;
+//   }
+// }
+
+// .FinalPrice {
+//   background: var(--primary-colour);
+//   width: 220px;
+//   height: 220px;
+//   margin: 0 auto 5rem auto;
+//   border-radius: 150px;
+//   text-align: center;
+//   color: #fff;
+//   padding-top: 65px;
+//   animation-name: shadow;
+//   animation-duration: 3s;
+//   animation-iteration-count: infinite;
+//   font-size: 2rem;
+//   small {
+//     font-size: 1.5rem;
+//   }
+// }
 
 @keyframes shadow {
   0%   { box-shadow: 0 0 0 0 rgba(var(--primary-colour-rgb), 0.35) }

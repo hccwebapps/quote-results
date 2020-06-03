@@ -1,0 +1,60 @@
+.Modal {
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  transition: opacity 0.65s ease-out;
+  .ModalBackground {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(0,0,0,0.65);
+    animation: pulse 0.5s forwards;
+  }
+  .ModalBody {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 60%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    animation: fadein 1s forwards;
+    text-align: center;
+    .Button {
+      margin-left: 0.25rem;
+      margin-right: 0.25rem;
+    }
+  }
+  &.Closing {
+    opacity: 0;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    opacity: 0;
+  }
+  100% {
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    opacity: 1;
+  }
+}
+
+@keyframes fadein {
+  0%,
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

@@ -2,7 +2,6 @@ import React from 'react'
 import numeral from 'numeral'
 import Item from './Item'
 import useCoverage from 'useCoverage'
-import { valueCopy, booleanCopy } from 'copy'
 
 import './style.scss'
 

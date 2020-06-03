@@ -27,6 +27,7 @@
   transition: height 200ms ease-out;
   &.Active {
     height: 125px;
+    overflow: visible;
   }
   span {
     display: inline-block;
@@ -65,24 +66,35 @@
     font-size: 2rem;
     outline: none;
     font-weight: 600;
-    background: var(--secondary-colour);
+    background: var(--success);
     line-height: 1.5rem;
     padding-top: 12px;
+    p {
+      margin: 0;
+    }
     span {
       display: block;
       font-size: 1.25rem;
       font-weight: 400;
     }
     &.Disabled {
-      color: #888;
-      pointer-events: none;
+      background: #999;
+      color: rgba(255,255,255,0.5);
+      transform: scale(0.7);
+      &:hover {
+        cursor: not-allowed;
+        transform: scale(0.7);
+      }
+      p {
+        filter: blur(1px);
+      }
     }
   }
 }
 
 .VehiclePicker {
   width: 200px;
-  height: 30px;
+  height: 40px;
   line-height: 30px;
   margin: 0 auto 1rem auto;
   text-align: center;
@@ -97,7 +109,7 @@
       content: '⌄';
       position: absolute;
       top: 0px;
-      line-height: 18px;
+      line-height: 30px;
       right: calc(50% - 90px);
     }
     select {
@@ -105,7 +117,7 @@
       font: inherit;
       display: block;
       width: 100%;
-      height: 100%;
+      height: 40px;
       border: none;
       outline: none;
     }
@@ -122,6 +134,8 @@
   border-radius: 6px;
   transition: all 233ms ease-out;
   padding-top: 2rem;
+  max-width: 600px;
+  margin: 0 auto;
   &.Faded {
     margin-top: 125px;
     opacity: 0;
@@ -133,10 +147,12 @@
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  padding: 0.5rem 1rem;
+  padding: 0.75rem 1rem;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
   outline: none;
+  font-size: 0.9rem;
+  background: #bbb;
   &:hover {
     transform: translateX(-50%);
     padding-bottom: 1rem;

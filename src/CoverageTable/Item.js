@@ -1,11 +1,22 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useContext, useEffect, useRef } from 'react'
 import classNames from 'classnames'
-import Button from 'Button'
 import { valueCopy, booleanCopy } from 'copy'
+import { AppContext } from 'App'
 
-const Item = ({ name, value, isBoolean, setHelpItem, New }) => {
+function usePrevious(value) {
+  const ref = useRef()
+  useEffect(() => {
+    ref.current = value
+  })
+  return ref.current
+}
 
-  const [changed, setChanged] = useState(false)
+const Item = ({ name, value, isBoolean, helpActive, New }) => {
+
+  const previous = usePrevious({ value })
+
+  const { delta } = useContext(AppContext)
+  const [increaseOrDecrease, setIncreaseOrDecrease] = useState(null)
 
   const isDisabled = () => {
     if (isBoolean) {
@@ -15,45 +26,65 @@ const Item = ({ name, value, isBoolean, setHelpItem, New }) => {
     }
   }
 
+  const waiverDisabled = () => {
+    if (name === 'waiver_depreciation') {
+      if (!New) {
+        return true
+      }
+    }
+  }
+
   const cls = classNames('Item', {
-    'Updated': changed,
     'Boolean': isBoolean,
     'Liability': name === 'liability',
     'ValueItem': name === 'coverage_collision' || name === 'coverage_comprehensive',
     'NonLiability': name !== 'liability',
     'Disabled': isDisabled(),
+    'WaiverDisabled': waiverDisabled(),
+    'Increased': increaseOrDecrease === 'increased',
+    'Decreased': increaseOrDecrease === 'decreased',
   })
 
   useEffect(() => {
-    setChanged(true)
-    setTimeout(() => {
-      setChanged(false)
-    }, 2000)
-  }, [value])
-
-  if (name === 'liability') {
-    return (
-      <div className={cls}>
-        <strong>${value} Liability Limit</strong> <Button onClick={() => setHelpItem(name)}>?</Button>
-      </div>
-    )
-  }
+    if (previous) {
+      if (previous.value !== value) {
+        if (delta === 'up') {
+          setIncreaseOrDecrease('increased')
+        } else {
+          setIncreaseOrDecrease('decreased')
+        }
+      }
+    }
+    // setTimeout(() => {
+    //   setIncreaseOrDecrease(null)
+    // }, 3000)
+  })
 
   return (
     <div className={cls}>
-      <div>
+      {/* <div>
         <Button onClick={() => setHelpItem(name)}>?</Button>
-      </div>
+      </div> */}
       {isBoolean ? (
         value ?
-          <p className="CovLabel">{booleanCopy[name].title}</p> :
-          <p className= "CovLabel"><strike>{booleanCopy[name].title}</strike></p>
+          <h4>{booleanCopy[name].title}</h4> :
+          <h4 className= "CovLabel"><strike>{booleanCopy[name].title}</strike></h4>
       ) : (
         <div>
-          <p className="CovLabel">{valueCopy[name].title}</p>
           <strong>${value}</strong>
+          <h4 className="CovLabel">{valueCopy[name].title}</h4>
         </div>
       )}
+      {name === 'waiver_depreciation' && (
+        <div className="Ineligible">
+          <span>2020 Ford Focus SE</span>
+          <span>2007 Honda Fit LX (ineligible due to vehicle age)</span>
+        </div>
+      )}
+      <small className={helpActive ? 'HelpCopy Active' : 'HelpCopy'}>
+        {valueCopy[name] && valueCopy[name].help}
+        {booleanCopy[name] && booleanCopy[name].help}
+      </small>
     </div>
   )
 }

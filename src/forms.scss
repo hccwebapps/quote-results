@@ -1,4 +1,5 @@
-input[type='text'] {
+input[type='text'],
+select {
   appearance: none;
   border: 1px solid #ccc;
   width: 100%;
@@ -13,7 +14,8 @@ input[type='text'] {
 label {
   display: block;
   margin-bottom: 5px;
-  color: #888;
+  color: rgba(var(--primary-colour-rgb), 0.8);
+
 }
 
 .field {

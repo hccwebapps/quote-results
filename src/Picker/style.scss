@@ -11,14 +11,18 @@
     padding: 0.25rem 0.75rem;
     border-radius: 6px;
     color: rgba(var(--primary-colour-rgb), 0.5);
+    color: #999;
     outline: none;
+    transition: background 0.25s ease-out;
     &.Active {
       color: var(--primary-colour);
+      font-weight: 600;
+      background: #e6eff7;
     }
     &:hover {
       cursor: pointer;
       color: var(--primary-colour);
-      background: #f9fcff;
+      background: #e6eff7;
     }
   }
   .PickerButton.Good {
@@ -27,13 +31,14 @@
     border-right: none;
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
+    width: 85px;
   }
   .PickerButton.Better {
     span {
       display: inline-block;
       font-size: 1.05rem;
-      font-weight: 600;
       padding: 0.5rem 0.75rem;
+      width: 150px;
     }
   }
   .PickerButton.Best {
@@ -42,6 +47,7 @@
     border-left: none;
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
+    width: 85px;
   }
 }
 

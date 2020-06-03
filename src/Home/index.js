@@ -1,23 +1,28 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import Price from 'Price'
 import Picker from 'Picker'
 import Button from 'Button'
 import SingleVehicle from 'SingleVehicle'
 import useVehicles from 'useVehicles'
+import { AppContext } from 'App'
 
 import './style.scss'
 
-const Home = ({ vehicleIds, currentPackage, setCurrentPackage, changePackage, priceLoading }) => {
+const Home = () => {
+
+  const { prices, vehicleIds, currentPackage, setCurrentPackage, priceLoading, delta, setDelta } = useContext(AppContext)
 
   const { vehicles } = useVehicles(vehicleIds, currentPackage)
 
   const [visibleVehicle, setVisibleVehicle] = useState(1)
   const [buying, setBuying] = useState(false)
+  const [helpActive, setHelpActive] = useState(false)
 
   const handleClick = () => setBuying(prevState => !prevState)
 
-  const changeVehicle = e => {
-    setVisibleVehicle(Number(e.target.value))
+  const setPackageAndDelta = (pack, delta) => {
+    setDelta(delta)
+    setCurrentPackage(pack)
   }
 
   return (
@@ -28,18 +33,18 @@ const Home = ({ vehicleIds, currentPackage, setCurrentPackage, changePackage, pr
       </div>
       <div className="PriceWrapper">
         <Price />
-        <Button onClick={handleClick} className={buying ? 'BuyNow Disabled' : 'BuyNow'}>
-          BUY
-          <span>NOW</span>
+        <Button onClick={buying ? () => {} : handleClick} className={buying ? 'BuyNow Disabled' : 'BuyNow'}>
+          <p>BUY<span>NOW</span></p>
         </Button>
       </div>
+      <p className={buying ? 'MLD Buying text-center' : 'MLD text-center'}>You saved ${prices.saved} per month by selecting<br />the home and auto discount.</p>
       <div className={buying ? 'BuyOptions Active' : 'BuyOptions'}>
-        <Button to="/online">
+        <Button to="/online" className="Success">
           <small>Buy</small>
           <span>Online</span>
         </Button>
         <span>OR</span>
-        <Button to="/offline">
+        <Button to="/offline" className="Success">
           <small>Have Us</small>
           <span>Call You</span>
         </Button>
@@ -51,10 +56,10 @@ const Home = ({ vehicleIds, currentPackage, setCurrentPackage, changePackage, pr
         <Picker
           currentPackage={currentPackage}
           setCurrentPackage={setCurrentPackage}
-          changePackage={changePackage}
           priceLoading={priceLoading}
+          setPackageAndDelta={setPackageAndDelta}
         />
-        {vehicles.length > 1 ? (
+        {/* {vehicles.length > 1 ? (
           <div className="VehiclePicker Select">
             <select onChange={changeVehicle}>
               {vehicles.map(v =>
@@ -68,41 +73,27 @@ const Home = ({ vehicleIds, currentPackage, setCurrentPackage, changePackage, pr
           <div className="VehiclePicker">
               {vehicles[0].year} {vehicles[0].make} {vehicles[0].model}
           </div>
-        )}
+        )} */}
+        {/* <p className="text-center" style={{ margin: '0 2rem 1rem' }}>
+          <small>
+            Your 2007 Ford Focus LX is not eligible for Waiver of Depreciation coverage since it is more than two years old.
+          </small>
+        </p> */}
+        <p className="text-center" style={{ marginTop: '0' }}>
+          <Button onClick={() => setHelpActive(!helpActive)} className="Small Rounded White">
+            Coverage Details
+          </Button>
+        </p>
         {vehicles.map(v =>
           <SingleVehicle
             key={v.id}
             vehicle={v}
             currentPackage={currentPackage}
             visibleVehicle={visibleVehicle}
+            helpActive={helpActive}
           />
         )}
       </div>
-      {/* <div>
-        <table id="CovTable">
-          <tbody>
-            <tr>
-              <th></th>
-              <th>Liability</th>
-              <th>Comprehensive Coverage</th>
-              <th>Collision Coverage</th>
-              <th>Standard Benefits</th>
-              <th>Damage to Non-Owner Autos</th>
-              <th>Depreciation Waiver</th>
-              <th>Accident Waiver</th>
-              <th>Transportation Relacement</th>
-              <th>Restriction of Glass Coverage</th>
-            </tr>
-            {vehicles.map(v =>
-              <CoverageRow
-                key={v.id}
-                vehicle={v}
-                currentPackage={currentPackage}
-              />
-            )}
-          </tbody>
-        </table>
-      </div> */}
       {buying &&
         <Button className="Cancel" onClick={() => setBuying(false)}>
           Go back and<br />Modify Coverage

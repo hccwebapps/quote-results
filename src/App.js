@@ -1,10 +1,15 @@
 import React, { useState, useEffect } from 'react'
 import { Switch, Route } from 'react-router-dom'
 import Header from 'Header'
-import NewHome from 'NewHome'
+import Home from 'Home'
+import Modal from 'Modal'
 import ApplyOnline from 'ApplyOnline'
 import ApplyOffline from 'ApplyOffline'
 import OntarioBenefits from 'OntarioBenefits'
+import OfflineReceived from 'OfflineReceived'
+import OnlineContinue from 'OnlineContinue'
+import Quote from 'Quote'
+import usePrice from 'usePrice'
 
 import './forms.scss'
 
@@ -12,9 +17,12 @@ export const AppContext = React.createContext()
 
 const App = () => {
 
-  const [vehicleIds, setVehicleIds] = useState([1])
-  const [priceLoading, setPriceLoading] = useState(false)
+  const [vehicleIds, setVehicleIds] = useState([1,2])
   const [currentPackage, setCurrentPackage] = useState('recommended')
+  const [modalActive, setModalActive] = useState(false)
+  const [delta, setDelta] = useState(null)
+
+  const { prices, priceLoading, setPriceLoading, oabsChanged, setOabsChanged } = usePrice(currentPackage)
 
   const add = () => {
     if (vehicleIds.length < 4) {
@@ -38,14 +46,6 @@ const App = () => {
     }
   }
 
-  const changePackage = nextPackage => {
-    setPriceLoading(true)
-    setCurrentPackage(nextPackage)
-    setTimeout(() => {
-      setPriceLoading(false)
-    }, 2000)
-  }
-
   useEffect(() => {
     const vehicles = localStorage.getItem('vehicles')
     if (vehicles && vehicles.length > 0) {
@@ -55,24 +55,30 @@ const App = () => {
 
   return (
     <AppContext.Provider value={{
+      vehicleIds,
+      prices,
       priceLoading,
       setPriceLoading,
       currentPackage,
       setCurrentPackage,
-      changePackage,
+      oabsChanged,
+      setOabsChanged,
+      delta,
+      setDelta,
     }}>
       <div className="App container">
-        <Header />
+        <Switch>
+          <Route path="/quote">
+            <Header />
+          </Route>
+          <Route path="/">
+            <Header Full />
+          </Route>
+        </Switch>
+        
         <Switch>
           <Route exact path="/">
-            <NewHome />
-            {/* <Home
-              vehicleIds={vehicleIds}
-              currentPackage={currentPackage}
-              setCurrentPackage={setCurrentPackage}
-              changePackage={changePackage}
-              priceLoading={priceLoading}
-            /> */}
+            <Home />
           </Route>
           <Route path="/online">
             <ApplyOnline />
@@ -81,7 +87,16 @@ const App = () => {
             <ApplyOffline />
           </Route>
           <Route path="/ontario-benefits">
-            <OntarioBenefits />
+            <OntarioBenefits setModalActive={setModalActive} />
+          </Route>
+          <Route path="/offline-received">
+            <OfflineReceived />
+          </Route>
+          <Route path="/online-continue">
+            <OnlineContinue />
+          </Route>
+          <Route path="/quote">
+            <Quote />
           </Route>
         </Switch>
       </div>
@@ -90,6 +105,10 @@ const App = () => {
           <button onClick={remove}>-</button><button onClick={add}>+</button>
         </div>
       </div>
+      {modalActive && <Modal
+        active={modalActive}
+        setModalActive={setModalActive}
+      />}
     </AppContext.Provider>
   )
 }

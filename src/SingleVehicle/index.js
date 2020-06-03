@@ -4,7 +4,7 @@ import CoverageTable from 'CoverageTable'
 
 import './style.scss'
 
-const SingleVehicle = ({ vehicle, currentPackage, visibleVehicle }) => {
+const SingleVehicle = ({ vehicle, currentPackage, visibleVehicle, helpActive }) => {
 
   const { valueCoverage, booleanCoverage } = useCoverage(currentPackage)
 
@@ -19,6 +19,7 @@ const SingleVehicle = ({ vehicle, currentPackage, visibleVehicle }) => {
         valueCoverage={valueCoverage}
         booleanCoverage={booleanCoverage}
         New={vehicle.new}
+        helpActive={helpActive}
       />
     </div>
   )

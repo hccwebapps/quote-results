@@ -14,3 +14,15 @@ hr {
   height: 0;
   border-top: 1px solid #999;
 }
+
+.text-primary {
+  color: var(--primary-colour);
+}
+
+.titlecase {
+  text-transform: capitalize;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}

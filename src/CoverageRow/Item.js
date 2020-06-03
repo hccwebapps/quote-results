@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import classNames from 'classnames'
-import Button from 'Button'
-import { valueCopy, booleanCopy } from 'copy'
 
 const Item = ({ name, value, isBoolean, setHelpItem, New }) => {
 

@@ -15,13 +15,14 @@ const RadioGroup = ({ name, choices, value, setValue, defaultValue, smallCopy })
 
   return (
     <div className={cls}>
-      {choices && choices.map(ch =>
+      {choices && choices.map((ch, i) =>
         <label
-          htmlFor={ch[0]}
+          htmlFor={`${ch[0]}-${name}`}
           key={ch[0]}
           className={ch[0] === defaultValue ? 'NoIncrease' : 'RegularOption'}
         >
           <input
+            id={`${ch[0]}-${name}`}
             type="radio"
             name={name}
             checked={value === ch[0]}

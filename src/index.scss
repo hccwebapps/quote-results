@@ -7,7 +7,7 @@
   --secondary-colour: rgb(229, 23, 50);
   --secondary-colour-rgb: 229, 23, 50;
 
-  --success: #77dd77;
+  --success: #2ec36a;
 }
 
 * {
@@ -23,6 +23,13 @@ body {
   -moz-osx-font-smoothing: grayscale;
   color: #555;
   padding-bottom: 3rem;
+}
+
+a {
+  color: var(--primary-colour);
+  &:hover {
+    text-decoration: none;
+  }
 }
 
 .AddRemoveVehicles {

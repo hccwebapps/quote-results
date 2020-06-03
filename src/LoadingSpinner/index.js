@@ -2,13 +2,13 @@ import React from 'react'
 
 import './style.scss'
 
-const LoadingSpinner = () => {
+const LoadingSpinner = ({ Simple }) => {
   return (
-    <div className="LoadingSpinner clearfix">
+    <div className={Simple ? 'LoadingSpinner Simple clearfix' : 'LoadingSpinner clearfix'}>
       <div className="loader-holder">
         <div className="loader" />
       </div>
-      <h4 style={{ display: 'block' }}>Fetching your<br />updated price</h4>
+      <h4>Fetching your <br />updated price</h4>
     </div>
   )
 }
