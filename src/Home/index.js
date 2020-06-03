@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import Price from 'Price'
 import Picker from 'Picker'
 import Button from 'Button'
-import CoverageRow from 'CoverageRow'
 import SingleVehicle from 'SingleVehicle'
 import useVehicles from 'useVehicles'
 
